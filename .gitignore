@@ -1,0 +1,5 @@
+# Project exclude paths
+/.gradle/
+/build/
+/cloud-email-server/build/
+/cloud-email-server/build/classes/java/main/

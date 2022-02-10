@@ -1,0 +1,3 @@
+rootProject.name = 'gradle2019lab'
+include 'cloud-email-server'
+

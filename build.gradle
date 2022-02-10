@@ -1,0 +1,65 @@
+
+plugins {
+    id 'java'
+    id 'idea'
+}
+
+ext {
+    jsonVersion = '1.2.79'
+    springBootVersion = '2.4.0'
+    springCloudVersion = '2020.0.5'
+    alibabaCloudVersion = '2021.1'
+    junitVersion = '5.8.2.RELEASE'
+    log4jVersion = '1.2.17'
+    lombokVersion = '1.16.18'
+    mysqlVersion = '5.1.47'
+    druidspringVersion = '1.2.8'
+//    druidspringVersion = '1.1.10'
+    druidVersion = '1.1.16'
+    mybatisSpringBootVersion = '2.1.4'
+    swaggerVersion = '2.6.1'
+    pagehelperVersion = '4.2.1'
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    // 指定JDK版本
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    group 'com.lykj.springcloud'
+    version '1.0-SNAPSHOT'
+
+    repositories {
+        mavenLocal()
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/spring/' }
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation group: 'org.springframework.boot', name: 'spring-boot-dependencies', version: springBootVersion, ext: 'pom'
+        implementation group: 'org.springframework.cloud', name: 'spring-cloud-dependencies', version: springCloudVersion, ext: 'pom'
+        implementation "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: springBootVersion
+        implementation group: 'org.springframework.cloud', name: 'spring-cloud-context', version: '3.0.5'
+        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-autoconfigure
+//        implementation group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '2.4.2'
+        implementation group: 'com.alibaba.cloud', name: 'spring-cloud-alibaba-dependencies', version: alibabaCloudVersion, ext: 'pom'
+        implementation group: 'com.alibaba', name: 'druid-spring-boot-starter', version: druidspringVersion
+        implementation group: 'com.alibaba', name: 'druid', version: druidVersion
+        implementation group: 'com.alibaba', name: 'fastjson', version: jsonVersion
+        implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery', version: alibabaCloudVersion
+        implementation group: 'io.springfox', name: 'springfox-swagger2', version: swaggerVersion
+        implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: swaggerVersion
+        implementation group: 'com.github.pagehelper', name: 'pagehelper', version: pagehelperVersion
+        implementation group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion
+        implementation group: 'log4j', name: 'log4j', version: log4jVersion
+        implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisSpringBootVersion
+    }
+}
+
+
+subprojects {
+}
