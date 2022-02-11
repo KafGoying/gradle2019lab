@@ -1,3 +1,8 @@
 rootProject.name = 'gradle2019lab'
 include 'cloud-email-server'
+include 'cloud-ai-server'
+include 'cloud-api-commons'
+include 'cloud-api-data'
+include 'cloud-api-feign'
+include 'cloud-job-servers'
 

@@ -1,0 +1,5 @@
+dependencies {
+    implementation project(":cloud-api-feign")
+    implementation project(":cloud-api-data")
+    implementation project(":cloud-api-commons")
+}

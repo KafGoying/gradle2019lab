@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lykj.com.lykj.springcloud.data.dao.WorkFlowTableMapper">
+  <resultMap id="BaseResultMap" type="com.lykj.com.lykj.springcloud.data.entities.WorkFlowTable">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="templeId" jdbcType="INTEGER" property="templeId" />
+    <result column="createrId" jdbcType="INTEGER" property="createrId" />
+    <result column="nodeState" jdbcType="VARCHAR" property="nodeState" />
+    <result column="nodeTime" jdbcType="INTEGER" property="nodeTime" />
+    <result column="createTime" jdbcType="VARCHAR" property="createTime" />
+    <result column="nodeNow" jdbcType="VARCHAR" property="nodeNow" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="taskTableGroup" jdbcType="CHAR" property="taskTableGroup" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, templeId, createrId, nodeState, nodeTime, createTime, nodeNow, state, taskTableGroup
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from workFlowTable
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from workFlowTable
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lykj.com.lykj.springcloud.data.entities.WorkFlowTable">
+    insert into workFlowTable (id, templeId, createrId, 
+      nodeState, nodeTime, createTime, 
+      nodeNow, state, taskTableGroup
+      )
+    values (#{id,jdbcType=INTEGER}, #{templeId,jdbcType=INTEGER}, #{createrId,jdbcType=INTEGER}, 
+      #{nodeState,jdbcType=VARCHAR}, #{nodeTime,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR}, 
+      #{nodeNow,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{taskTableGroup,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lykj.com.lykj.springcloud.data.entities.WorkFlowTable">
+    insert into workFlowTable
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="templeId != null">
+        templeId,
+      </if>
+      <if test="createrId != null">
+        createrId,
+      </if>
+      <if test="nodeState != null">
+        nodeState,
+      </if>
+      <if test="nodeTime != null">
+        nodeTime,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="nodeNow != null">
+        nodeNow,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="taskTableGroup != null">
+        taskTableGroup,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="templeId != null">
+        #{templeId,jdbcType=INTEGER},
+      </if>
+      <if test="createrId != null">
+        #{createrId,jdbcType=INTEGER},
+      </if>
+      <if test="nodeState != null">
+        #{nodeState,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeTime != null">
+        #{nodeTime,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeNow != null">
+        #{nodeNow,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTableGroup != null">
+        #{taskTableGroup,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lykj.com.lykj.springcloud.data.entities.WorkFlowTable">
+    update workFlowTable
+    <set>
+      <if test="templeId != null">
+        templeId = #{templeId,jdbcType=INTEGER},
+      </if>
+      <if test="createrId != null">
+        createrId = #{createrId,jdbcType=INTEGER},
+      </if>
+      <if test="nodeState != null">
+        nodeState = #{nodeState,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeTime != null">
+        nodeTime = #{nodeTime,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeNow != null">
+        nodeNow = #{nodeNow,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTableGroup != null">
+        taskTableGroup = #{taskTableGroup,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lykj.com.lykj.springcloud.data.entities.WorkFlowTable">
+    update workFlowTable
+    set templeId = #{templeId,jdbcType=INTEGER},
+      createrId = #{createrId,jdbcType=INTEGER},
+      nodeState = #{nodeState,jdbcType=VARCHAR},
+      nodeTime = #{nodeTime,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=VARCHAR},
+      nodeNow = #{nodeNow,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      taskTableGroup = #{taskTableGroup,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lykj.com.lykj.springcloud.data.dao.TaskTableMapper">
+  <resultMap id="BaseResultMap" type="com.lykj.com.lykj.springcloud.data.entities.TaskTable">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="owner_id" jdbcType="INTEGER" property="owner_id" />
+    <result column="owner_name" jdbcType="VARCHAR" property="owner_name" />
+    <result column="taskInfo" jdbcType="VARCHAR" property="taskInfo" />
+    <result column="beginTime" jdbcType="TIMESTAMP" property="beginTime" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="progress" jdbcType="CHAR" property="progress" />
+    <result column="risk" jdbcType="VARCHAR" property="risk" />
+    <result column="taskSenderId" jdbcType="INTEGER" property="taskSenderId" />
+    <result column="taskSenderName" jdbcType="VARCHAR" property="taskSenderName" />
+    <result column="expectedCompletionTime" jdbcType="TIMESTAMP" property="expectedCompletionTime" />
+    <result column="closeTime" jdbcType="TIMESTAMP" property="closeTime" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="projectId" jdbcType="INTEGER" property="projectId" />
+    <result column="taskTempleId" jdbcType="INTEGER" property="taskTempleId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, owner_id, owner_name, taskInfo, beginTime, state, progress, risk, taskSenderId, 
+    taskSenderName, expectedCompletionTime, closeTime, remarks, projectId, taskTempleId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from taskTable
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from taskTable
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lykj.com.lykj.springcloud.data.entities.TaskTable">
+    insert into taskTable (id, owner_id, owner_name, 
+      taskInfo, beginTime, state, 
+      progress, risk, taskSenderId, 
+      taskSenderName, expectedCompletionTime, 
+      closeTime, remarks, projectId, 
+      taskTempleId)
+    values (#{id,jdbcType=INTEGER}, #{owner_id,jdbcType=INTEGER}, #{owner_name,jdbcType=VARCHAR}, 
+      #{taskInfo,jdbcType=VARCHAR}, #{beginTime,jdbcType=TIMESTAMP}, #{state,jdbcType=VARCHAR}, 
+      #{progress,jdbcType=CHAR}, #{risk,jdbcType=VARCHAR}, #{taskSenderId,jdbcType=INTEGER}, 
+      #{taskSenderName,jdbcType=VARCHAR}, #{expectedCompletionTime,jdbcType=TIMESTAMP}, 
+      #{closeTime,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{projectId,jdbcType=INTEGER}, 
+      #{taskTempleId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lykj.com.lykj.springcloud.data.entities.TaskTable">
+    insert into taskTable
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="owner_id != null">
+        owner_id,
+      </if>
+      <if test="owner_name != null">
+        owner_name,
+      </if>
+      <if test="taskInfo != null">
+        taskInfo,
+      </if>
+      <if test="beginTime != null">
+        beginTime,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="progress != null">
+        progress,
+      </if>
+      <if test="risk != null">
+        risk,
+      </if>
+      <if test="taskSenderId != null">
+        taskSenderId,
+      </if>
+      <if test="taskSenderName != null">
+        taskSenderName,
+      </if>
+      <if test="expectedCompletionTime != null">
+        expectedCompletionTime,
+      </if>
+      <if test="closeTime != null">
+        closeTime,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="projectId != null">
+        projectId,
+      </if>
+      <if test="taskTempleId != null">
+        taskTempleId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="owner_id != null">
+        #{owner_id,jdbcType=INTEGER},
+      </if>
+      <if test="owner_name != null">
+        #{owner_name,jdbcType=VARCHAR},
+      </if>
+      <if test="taskInfo != null">
+        #{taskInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="progress != null">
+        #{progress,jdbcType=CHAR},
+      </if>
+      <if test="risk != null">
+        #{risk,jdbcType=VARCHAR},
+      </if>
+      <if test="taskSenderId != null">
+        #{taskSenderId,jdbcType=INTEGER},
+      </if>
+      <if test="taskSenderName != null">
+        #{taskSenderName,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedCompletionTime != null">
+        #{expectedCompletionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closeTime != null">
+        #{closeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null">
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="taskTempleId != null">
+        #{taskTempleId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lykj.com.lykj.springcloud.data.entities.TaskTable">
+    update taskTable
+    <set>
+      <if test="owner_id != null">
+        owner_id = #{owner_id,jdbcType=INTEGER},
+      </if>
+      <if test="owner_name != null">
+        owner_name = #{owner_name,jdbcType=VARCHAR},
+      </if>
+      <if test="taskInfo != null">
+        taskInfo = #{taskInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        beginTime = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="progress != null">
+        progress = #{progress,jdbcType=CHAR},
+      </if>
+      <if test="risk != null">
+        risk = #{risk,jdbcType=VARCHAR},
+      </if>
+      <if test="taskSenderId != null">
+        taskSenderId = #{taskSenderId,jdbcType=INTEGER},
+      </if>
+      <if test="taskSenderName != null">
+        taskSenderName = #{taskSenderName,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedCompletionTime != null">
+        expectedCompletionTime = #{expectedCompletionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closeTime != null">
+        closeTime = #{closeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null">
+        projectId = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="taskTempleId != null">
+        taskTempleId = #{taskTempleId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lykj.com.lykj.springcloud.data.entities.TaskTable">
+    update taskTable
+    set owner_id = #{owner_id,jdbcType=INTEGER},
+      owner_name = #{owner_name,jdbcType=VARCHAR},
+      taskInfo = #{taskInfo,jdbcType=VARCHAR},
+      beginTime = #{beginTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=VARCHAR},
+      progress = #{progress,jdbcType=CHAR},
+      risk = #{risk,jdbcType=VARCHAR},
+      taskSenderId = #{taskSenderId,jdbcType=INTEGER},
+      taskSenderName = #{taskSenderName,jdbcType=VARCHAR},
+      expectedCompletionTime = #{expectedCompletionTime,jdbcType=TIMESTAMP},
+      closeTime = #{closeTime,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      projectId = #{projectId,jdbcType=INTEGER},
+      taskTempleId = #{taskTempleId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lykj.com.lykj.springcloud.data.dao.ProjectMapper">
+  <resultMap id="BaseResultMap" type="com.lykj.com.lykj.springcloud.data.entities.Project">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="PM_RD" jdbcType="INTEGER" property="PM_RD" />
+    <result column="PM_MK" jdbcType="INTEGER" property="PM_MK" />
+    <result column="PM_BU" jdbcType="INTEGER" property="PM_BU" />
+    <result column="PM_PU" jdbcType="INTEGER" property="PM_PU" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="stage" jdbcType="VARCHAR" property="stage" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="strOwner" jdbcType="INTEGER" property="strOwner" />
+    <result column="testOwner" jdbcType="INTEGER" property="testOwner" />
+    <result column="npiOwner" jdbcType="INTEGER" property="npiOwner" />
+    <result column="eleOwner" jdbcType="INTEGER" property="eleOwner" />
+    <result column="programOwner" jdbcType="INTEGER" property="programOwner" />
+    <result column="authenticationOwner" jdbcType="INTEGER" property="authenticationOwner" />
+    <result column="wokFlowGroup" jdbcType="CHAR" property="wokFlowGroup" />
+    <result column="currentTaskGroup" jdbcType="CHAR" property="currentTaskGroup" />
+    <result column="beginTime" jdbcType="TIMESTAMP" property="beginTime" />
+    <result column="PRO_CODE" jdbcType="VARCHAR" property="PRO_CODE" />
+    <result column="PRO_NAME" jdbcType="VARCHAR" property="PRO_NAME" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, PM_RD, PM_MK, PM_BU, PM_PU, state, stage, link, strOwner, testOwner, npiOwner, 
+    eleOwner, programOwner, authenticationOwner, wokFlowGroup, currentTaskGroup, beginTime, 
+    PRO_CODE, PRO_NAME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from project
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from project
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lykj.com.lykj.springcloud.data.entities.Project">
+    insert into project (id, PM_RD, PM_MK, 
+      PM_BU, PM_PU, state, 
+      stage, link, strOwner, 
+      testOwner, npiOwner, eleOwner, 
+      programOwner, authenticationOwner, wokFlowGroup, 
+      currentTaskGroup, beginTime, PRO_CODE, 
+      PRO_NAME)
+    values (#{id,jdbcType=INTEGER}, #{PM_RD,jdbcType=INTEGER}, #{PM_MK,jdbcType=INTEGER}, 
+      #{PM_BU,jdbcType=INTEGER}, #{PM_PU,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR}, 
+      #{stage,jdbcType=VARCHAR}, #{link,jdbcType=VARCHAR}, #{strOwner,jdbcType=INTEGER}, 
+      #{testOwner,jdbcType=INTEGER}, #{npiOwner,jdbcType=INTEGER}, #{eleOwner,jdbcType=INTEGER}, 
+      #{programOwner,jdbcType=INTEGER}, #{authenticationOwner,jdbcType=INTEGER}, #{wokFlowGroup,jdbcType=CHAR}, 
+      #{currentTaskGroup,jdbcType=CHAR}, #{beginTime,jdbcType=TIMESTAMP}, #{PRO_CODE,jdbcType=VARCHAR}, 
+      #{PRO_NAME,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lykj.com.lykj.springcloud.data.entities.Project">
+    insert into project
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="PM_RD != null">
+        PM_RD,
+      </if>
+      <if test="PM_MK != null">
+        PM_MK,
+      </if>
+      <if test="PM_BU != null">
+        PM_BU,
+      </if>
+      <if test="PM_PU != null">
+        PM_PU,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="stage != null">
+        stage,
+      </if>
+      <if test="link != null">
+        link,
+      </if>
+      <if test="strOwner != null">
+        strOwner,
+      </if>
+      <if test="testOwner != null">
+        testOwner,
+      </if>
+      <if test="npiOwner != null">
+        npiOwner,
+      </if>
+      <if test="eleOwner != null">
+        eleOwner,
+      </if>
+      <if test="programOwner != null">
+        programOwner,
+      </if>
+      <if test="authenticationOwner != null">
+        authenticationOwner,
+      </if>
+      <if test="wokFlowGroup != null">
+        wokFlowGroup,
+      </if>
+      <if test="currentTaskGroup != null">
+        currentTaskGroup,
+      </if>
+      <if test="beginTime != null">
+        beginTime,
+      </if>
+      <if test="PRO_CODE != null">
+        PRO_CODE,
+      </if>
+      <if test="PRO_NAME != null">
+        PRO_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="PM_RD != null">
+        #{PM_RD,jdbcType=INTEGER},
+      </if>
+      <if test="PM_MK != null">
+        #{PM_MK,jdbcType=INTEGER},
+      </if>
+      <if test="PM_BU != null">
+        #{PM_BU,jdbcType=INTEGER},
+      </if>
+      <if test="PM_PU != null">
+        #{PM_PU,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null">
+        #{stage,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="strOwner != null">
+        #{strOwner,jdbcType=INTEGER},
+      </if>
+      <if test="testOwner != null">
+        #{testOwner,jdbcType=INTEGER},
+      </if>
+      <if test="npiOwner != null">
+        #{npiOwner,jdbcType=INTEGER},
+      </if>
+      <if test="eleOwner != null">
+        #{eleOwner,jdbcType=INTEGER},
+      </if>
+      <if test="programOwner != null">
+        #{programOwner,jdbcType=INTEGER},
+      </if>
+      <if test="authenticationOwner != null">
+        #{authenticationOwner,jdbcType=INTEGER},
+      </if>
+      <if test="wokFlowGroup != null">
+        #{wokFlowGroup,jdbcType=CHAR},
+      </if>
+      <if test="currentTaskGroup != null">
+        #{currentTaskGroup,jdbcType=CHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="PRO_CODE != null">
+        #{PRO_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="PRO_NAME != null">
+        #{PRO_NAME,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lykj.com.lykj.springcloud.data.entities.Project">
+    update project
+    <set>
+      <if test="PM_RD != null">
+        PM_RD = #{PM_RD,jdbcType=INTEGER},
+      </if>
+      <if test="PM_MK != null">
+        PM_MK = #{PM_MK,jdbcType=INTEGER},
+      </if>
+      <if test="PM_BU != null">
+        PM_BU = #{PM_BU,jdbcType=INTEGER},
+      </if>
+      <if test="PM_PU != null">
+        PM_PU = #{PM_PU,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null">
+        stage = #{stage,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="strOwner != null">
+        strOwner = #{strOwner,jdbcType=INTEGER},
+      </if>
+      <if test="testOwner != null">
+        testOwner = #{testOwner,jdbcType=INTEGER},
+      </if>
+      <if test="npiOwner != null">
+        npiOwner = #{npiOwner,jdbcType=INTEGER},
+      </if>
+      <if test="eleOwner != null">
+        eleOwner = #{eleOwner,jdbcType=INTEGER},
+      </if>
+      <if test="programOwner != null">
+        programOwner = #{programOwner,jdbcType=INTEGER},
+      </if>
+      <if test="authenticationOwner != null">
+        authenticationOwner = #{authenticationOwner,jdbcType=INTEGER},
+      </if>
+      <if test="wokFlowGroup != null">
+        wokFlowGroup = #{wokFlowGroup,jdbcType=CHAR},
+      </if>
+      <if test="currentTaskGroup != null">
+        currentTaskGroup = #{currentTaskGroup,jdbcType=CHAR},
+      </if>
+      <if test="beginTime != null">
+        beginTime = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="PRO_CODE != null">
+        PRO_CODE = #{PRO_CODE,jdbcType=VARCHAR},
+      </if>
+      <if test="PRO_NAME != null">
+        PRO_NAME = #{PRO_NAME,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lykj.com.lykj.springcloud.data.entities.Project">
+    update project
+    set PM_RD = #{PM_RD,jdbcType=INTEGER},
+      PM_MK = #{PM_MK,jdbcType=INTEGER},
+      PM_BU = #{PM_BU,jdbcType=INTEGER},
+      PM_PU = #{PM_PU,jdbcType=INTEGER},
+      state = #{state,jdbcType=VARCHAR},
+      stage = #{stage,jdbcType=VARCHAR},
+      link = #{link,jdbcType=VARCHAR},
+      strOwner = #{strOwner,jdbcType=INTEGER},
+      testOwner = #{testOwner,jdbcType=INTEGER},
+      npiOwner = #{npiOwner,jdbcType=INTEGER},
+      eleOwner = #{eleOwner,jdbcType=INTEGER},
+      programOwner = #{programOwner,jdbcType=INTEGER},
+      authenticationOwner = #{authenticationOwner,jdbcType=INTEGER},
+      wokFlowGroup = #{wokFlowGroup,jdbcType=CHAR},
+      currentTaskGroup = #{currentTaskGroup,jdbcType=CHAR},
+      beginTime = #{beginTime,jdbcType=TIMESTAMP},
+      PRO_CODE = #{PRO_CODE,jdbcType=VARCHAR},
+      PRO_NAME = #{PRO_NAME,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

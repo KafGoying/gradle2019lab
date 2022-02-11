@@ -1,4 +1,3 @@
-
 plugins {
     id 'java'
     id 'idea'
@@ -7,8 +6,10 @@ plugins {
 ext {
     jsonVersion = '1.2.79'
     springBootVersion = '2.4.0'
+    springCloudContextVersion = '3.0.5'
     springCloudVersion = '2020.0.5'
     alibabaCloudVersion = '2021.1'
+    openfeignBootVersion = '2.2.6.RELEASE'
     junitVersion = '5.8.2.RELEASE'
     log4jVersion = '1.2.17'
     lombokVersion = '1.16.18'
@@ -19,6 +20,7 @@ ext {
     mybatisSpringBootVersion = '2.1.4'
     swaggerVersion = '2.6.1'
     pagehelperVersion = '4.2.1'
+    lombokVersion = '1.18.12'
 }
 
 allprojects {
@@ -39,27 +41,51 @@ allprojects {
     }
 
     dependencies {
-        implementation group: 'org.springframework.boot', name: 'spring-boot-dependencies', version: springBootVersion, ext: 'pom'
-        implementation group: 'org.springframework.cloud', name: 'spring-cloud-dependencies', version: springCloudVersion, ext: 'pom'
+        implementation "org.springframework.boot:spring-boot-dependencies:$springBootVersion" //@pom
+        implementation "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"
         implementation "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
-        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: springBootVersion
-        implementation group: 'org.springframework.cloud', name: 'spring-cloud-context', version: '3.0.5'
-        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-autoconfigure
-//        implementation group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '2.4.2'
-        implementation group: 'com.alibaba.cloud', name: 'spring-cloud-alibaba-dependencies', version: alibabaCloudVersion, ext: 'pom'
-        implementation group: 'com.alibaba', name: 'druid-spring-boot-starter', version: druidspringVersion
-        implementation group: 'com.alibaba', name: 'druid', version: druidVersion
-        implementation group: 'com.alibaba', name: 'fastjson', version: jsonVersion
-        implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery', version: alibabaCloudVersion
-        implementation group: 'io.springfox', name: 'springfox-swagger2', version: swaggerVersion
-        implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: swaggerVersion
-        implementation group: 'com.github.pagehelper', name: 'pagehelper', version: pagehelperVersion
-        implementation group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion
-        implementation group: 'log4j', name: 'log4j', version: log4jVersion
-        implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisSpringBootVersion
+        implementation "org.springframework.boot:spring-boot-starter-thymeleaf:$springBootVersion"
+        implementation "org.springframework.cloud:spring-cloud-context:$springCloudContextVersion"
+        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-autoconfigure "
+//        implementation group: 'org.springframework.boot:spring-boot-autoconfigure: '2.4.2' "
+        implementation "com.alibaba.cloud:spring-cloud-alibaba-dependencies:$alibabaCloudVersion@pom"
+        implementation "com.alibaba:druid-spring-boot-starter:$druidspringVersion"
+        implementation "com.alibaba:druid:$druidVersion"
+        implementation "com.alibaba:fastjson:$jsonVersion"
+        implementation "com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery:$alibabaCloudVersion"
+        implementation "io.springfox:springfox-swagger2:$swaggerVersion"
+        implementation "io.springfox:springfox-swagger-ui:$swaggerVersion"
+        implementation "com.github.pagehelper:pagehelper:$pagehelperVersion"
+        implementation "mysql:mysql-connector-java:$mysqlVersion"
+        implementation "log4j:log4j:$log4jVersion"
+        implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisSpringBootVersion"
+        // https://mvnrepository.com/artifact/org.projectlombok/lombok
+        compileOnly "org.projectlombok:lombok:$lombokVersion"
+
+//
+//        implementation group: 'org.springframework.boot', name: 'spring-boot-dependencies', version: springBootVersion, ext: 'pom'
+        implementation group: 'org.springframework.cloud', name: 'spring-cloud-dependencies', version: springCloudVersion, ext: 'pom'
+//        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+//        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: springBootVersion
+//        implementation group: 'org.springframework.cloud', name: 'spring-cloud-context', version: '3.0.5'
+//        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-autoconfigure
+////        implementation group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '2.4.2'
+//        implementation group: 'com.alibaba.cloud', name: 'spring-cloud-alibaba-dependencies', version: alibabaCloudVersion, ext: 'pom'
+//        implementation group: 'com.alibaba', name: 'druid-spring-boot-starter', version: druidspringVersion
+//        implementation group: 'com.alibaba', name: 'druid', version: druidVersion
+//        implementation group: 'com.alibaba', name: 'fastjson', version: jsonVersion
+//        implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-discovery', version: alibabaCloudVersion
+//        implementation group: 'io.springfox', name: 'springfox-swagger2', version: swaggerVersion
+//        implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: swaggerVersion
+//        implementation group: 'com.github.pagehelper', name: 'pagehelper', version: pagehelperVersion
+//        implementation group: 'mysql', name: 'mysql-connector-java', version: mysqlVersion
+//        implementation group: 'log4j', name: 'log4j', version: log4jVersion
+//        implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisSpringBootVersion
+//// https://mvnrepository.com/artifact/org.projectlombok/lombok
+//        compileOnly "org.projectlombok:lombok:$lombokVersion"
+
     }
 }
 
 
-subprojects {
-}
+subprojects {}

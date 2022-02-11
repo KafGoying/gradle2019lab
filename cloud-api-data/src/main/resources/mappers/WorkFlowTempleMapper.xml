@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lykj.com.lykj.springcloud.data.dao.WorkFlowTempleMapper">
+  <resultMap id="BaseResultMap" type="com.lykj.com.lykj.springcloud.data.entities.WorkFlowTemple">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="taskGroup" jdbcType="CHAR" property="taskGroup" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="taskOrder" jdbcType="VARCHAR" property="taskOrder" />
+    <result column="taskTotal" jdbcType="VARCHAR" property="taskTotal" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, taskGroup, name, taskOrder, taskTotal
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from workFlowTemple
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from workFlowTemple
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lykj.com.lykj.springcloud.data.entities.WorkFlowTemple">
+    insert into workFlowTemple (id, taskGroup, name, 
+      taskOrder, taskTotal)
+    values (#{id,jdbcType=INTEGER}, #{taskGroup,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, 
+      #{taskOrder,jdbcType=VARCHAR}, #{taskTotal,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lykj.com.lykj.springcloud.data.entities.WorkFlowTemple">
+    insert into workFlowTemple
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="taskGroup != null">
+        taskGroup,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="taskOrder != null">
+        taskOrder,
+      </if>
+      <if test="taskTotal != null">
+        taskTotal,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="taskGroup != null">
+        #{taskGroup,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="taskOrder != null">
+        #{taskOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTotal != null">
+        #{taskTotal,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lykj.com.lykj.springcloud.data.entities.WorkFlowTemple">
+    update workFlowTemple
+    <set>
+      <if test="taskGroup != null">
+        taskGroup = #{taskGroup,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="taskOrder != null">
+        taskOrder = #{taskOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTotal != null">
+        taskTotal = #{taskTotal,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lykj.com.lykj.springcloud.data.entities.WorkFlowTemple">
+    update workFlowTemple
+    set taskGroup = #{taskGroup,jdbcType=CHAR},
+      name = #{name,jdbcType=VARCHAR},
+      taskOrder = #{taskOrder,jdbcType=VARCHAR},
+      taskTotal = #{taskTotal,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

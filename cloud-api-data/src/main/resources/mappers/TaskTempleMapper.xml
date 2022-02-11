@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lykj.com.lykj.springcloud.data.dao.TaskTempleMapper">
+  <resultMap id="BaseResultMap" type="com.lykj.com.lykj.springcloud.data.entities.TaskTemple">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="brief" jdbcType="VARCHAR" property="brief" />
+    <result column="stage" jdbcType="VARCHAR" property="stage" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="charge" jdbcType="VARCHAR" property="charge" />
+    <result column="addPeopleId" jdbcType="VARCHAR" property="addPeopleId" />
+    <result column="Complexity" jdbcType="INTEGER" property="complexity" />
+    <result column="details" jdbcType="VARCHAR" property="details" />
+    <result column="upperTask" jdbcType="CHAR" property="upperTask" />
+    <result column="lowerLevelTask" jdbcType="CHAR" property="lowerLevelTask" />
+    <result column="associatedTask" jdbcType="CHAR" property="associatedTask" />
+    <result column="cycleWeekday" jdbcType="INTEGER" property="cycleWeekday" />
+    <result column="cycleTimeHour" jdbcType="INTEGER" property="cycleTimeHour" />
+    <result column="focus" jdbcType="VARCHAR" property="focus" />
+    <result column="attribute" jdbcType="VARCHAR" property="attribute" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, brief, stage, link, charge, addPeopleId, Complexity, details, upperTask, 
+    lowerLevelTask, associatedTask, cycleWeekday, cycleTimeHour, focus, attribute
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from taskTemple
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from taskTemple
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lykj.com.lykj.springcloud.data.entities.TaskTemple">
+    insert into taskTemple (id, type, brief, 
+      stage, link, charge, 
+      addPeopleId, Complexity, details, 
+      upperTask, lowerLevelTask, associatedTask, 
+      cycleWeekday, cycleTimeHour, focus, 
+      attribute)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{brief,jdbcType=VARCHAR}, 
+      #{stage,jdbcType=VARCHAR}, #{link,jdbcType=VARCHAR}, #{charge,jdbcType=VARCHAR}, 
+      #{addPeopleId,jdbcType=VARCHAR}, #{complexity,jdbcType=INTEGER}, #{details,jdbcType=VARCHAR}, 
+      #{upperTask,jdbcType=CHAR}, #{lowerLevelTask,jdbcType=CHAR}, #{associatedTask,jdbcType=CHAR}, 
+      #{cycleWeekday,jdbcType=INTEGER}, #{cycleTimeHour,jdbcType=INTEGER}, #{focus,jdbcType=VARCHAR}, 
+      #{attribute,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lykj.com.lykj.springcloud.data.entities.TaskTemple">
+    insert into taskTemple
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="brief != null">
+        brief,
+      </if>
+      <if test="stage != null">
+        stage,
+      </if>
+      <if test="link != null">
+        link,
+      </if>
+      <if test="charge != null">
+        charge,
+      </if>
+      <if test="addPeopleId != null">
+        addPeopleId,
+      </if>
+      <if test="complexity != null">
+        Complexity,
+      </if>
+      <if test="details != null">
+        details,
+      </if>
+      <if test="upperTask != null">
+        upperTask,
+      </if>
+      <if test="lowerLevelTask != null">
+        lowerLevelTask,
+      </if>
+      <if test="associatedTask != null">
+        associatedTask,
+      </if>
+      <if test="cycleWeekday != null">
+        cycleWeekday,
+      </if>
+      <if test="cycleTimeHour != null">
+        cycleTimeHour,
+      </if>
+      <if test="focus != null">
+        focus,
+      </if>
+      <if test="attribute != null">
+        attribute,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null">
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null">
+        #{stage,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="charge != null">
+        #{charge,jdbcType=VARCHAR},
+      </if>
+      <if test="addPeopleId != null">
+        #{addPeopleId,jdbcType=VARCHAR},
+      </if>
+      <if test="complexity != null">
+        #{complexity,jdbcType=INTEGER},
+      </if>
+      <if test="details != null">
+        #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="upperTask != null">
+        #{upperTask,jdbcType=CHAR},
+      </if>
+      <if test="lowerLevelTask != null">
+        #{lowerLevelTask,jdbcType=CHAR},
+      </if>
+      <if test="associatedTask != null">
+        #{associatedTask,jdbcType=CHAR},
+      </if>
+      <if test="cycleWeekday != null">
+        #{cycleWeekday,jdbcType=INTEGER},
+      </if>
+      <if test="cycleTimeHour != null">
+        #{cycleTimeHour,jdbcType=INTEGER},
+      </if>
+      <if test="focus != null">
+        #{focus,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null">
+        #{attribute,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lykj.com.lykj.springcloud.data.entities.TaskTemple">
+    update taskTemple
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="brief != null">
+        brief = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="stage != null">
+        stage = #{stage,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="charge != null">
+        charge = #{charge,jdbcType=VARCHAR},
+      </if>
+      <if test="addPeopleId != null">
+        addPeopleId = #{addPeopleId,jdbcType=VARCHAR},
+      </if>
+      <if test="complexity != null">
+        Complexity = #{complexity,jdbcType=INTEGER},
+      </if>
+      <if test="details != null">
+        details = #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="upperTask != null">
+        upperTask = #{upperTask,jdbcType=CHAR},
+      </if>
+      <if test="lowerLevelTask != null">
+        lowerLevelTask = #{lowerLevelTask,jdbcType=CHAR},
+      </if>
+      <if test="associatedTask != null">
+        associatedTask = #{associatedTask,jdbcType=CHAR},
+      </if>
+      <if test="cycleWeekday != null">
+        cycleWeekday = #{cycleWeekday,jdbcType=INTEGER},
+      </if>
+      <if test="cycleTimeHour != null">
+        cycleTimeHour = #{cycleTimeHour,jdbcType=INTEGER},
+      </if>
+      <if test="focus != null">
+        focus = #{focus,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute != null">
+        attribute = #{attribute,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lykj.com.lykj.springcloud.data.entities.TaskTemple">
+    update taskTemple
+    set type = #{type,jdbcType=VARCHAR},
+      brief = #{brief,jdbcType=VARCHAR},
+      stage = #{stage,jdbcType=VARCHAR},
+      link = #{link,jdbcType=VARCHAR},
+      charge = #{charge,jdbcType=VARCHAR},
+      addPeopleId = #{addPeopleId,jdbcType=VARCHAR},
+      Complexity = #{complexity,jdbcType=INTEGER},
+      details = #{details,jdbcType=VARCHAR},
+      upperTask = #{upperTask,jdbcType=CHAR},
+      lowerLevelTask = #{lowerLevelTask,jdbcType=CHAR},
+      associatedTask = #{associatedTask,jdbcType=CHAR},
+      cycleWeekday = #{cycleWeekday,jdbcType=INTEGER},
+      cycleTimeHour = #{cycleTimeHour,jdbcType=INTEGER},
+      focus = #{focus,jdbcType=VARCHAR},
+      attribute = #{attribute,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
